@@ -1,0 +1,30 @@
+<!-- projekte.html -->
+
+{% extends 'base.html' %}
+
+{% block styles -%}
+{{super()}}
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+{% endblock styles %}
+
+{% block app_content %}
+<div class="container">
+	<h1>Projekte</h1>
+		<table class="table table-hover">
+      <thead>
+        <tr><th>ID</th><th>Projekt</th><th>Status</th><th>Beschreibung</th></tr>
+      </thead>
+      <tbody>
+			{% for projekt in projekte %}
+			 <tr>
+        <td>{{projekt['id']}}</td><td>{{projekt['fields']['Projekt']}} </td>
+        <td>{{projekt['fields']['Fertigstellungsstatus']}}</td>
+        <td>{{projekt['fields']['Text']}}</td>
+      </tr>
+			{% endfor %}
+    </tbody>
+		</table>
+</div>
+
+{% endblock %}
+

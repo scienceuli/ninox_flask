@@ -1,0 +1,30 @@
+<!-- mitglieder.html -->
+
+{% extends 'base.html' %}
+
+{% block styles -%}
+{{super()}}
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+{% endblock styles %}
+
+{% block app_content %}
+<div class="container">
+	<h1>Mitglieder</h1>
+		<table class="table table-hover">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Ort</th><th>Projekt</th></tr>
+      </thead>
+      <tbody>
+			{% for mitglied in mitglieder %}
+			 <tr>
+        <td>{{mitglied['id']}}</td><td>{{mitglied['fields']['Vorname']}} {{mitglied['fields']['Nachname']}}</td>
+        <td>{{mitglied['fields']['Ort']}}</td>
+        <td>{{mitglied['fields']['Projekt']}}</td>
+      </tr>
+			{% endfor %}
+    </tbody>
+		</table>
+</div>
+
+{% endblock %}
+

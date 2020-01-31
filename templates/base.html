@@ -1,0 +1,39 @@
+<!-- base.html -->
+
+{% extends 'bootstrap/base.html' %}
+
+{% block head %}
+    {{ super() }}
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$']], processEscapes: true } });</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" async></script>
+{% endblock %}
+
+{% block title %}
+	{% if title %}{{ title }} {% else %}Willkommen{% endif %}
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{{ url_for('mitglieder') }}">Mitarbeiter</a></li>
+      <li class="active"><a href="{{ url_for('projekte') }}">Projekte</a></li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {# application content needs to be provided in the app_content block #}
+        {% block app_content %}{% endblock %}
+    </div>
+{% endblock %}
