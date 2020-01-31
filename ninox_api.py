@@ -8,7 +8,7 @@ Bootstrap(app)
 
 @app.route('/')
 def hello():
-    return 'Hello World!'
+    return render_template('home.html')
 
 @app.route('/mitglieder')
 def mitglieder():
